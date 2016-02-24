@@ -1,0 +1,9 @@
+{
+    "type": "ftp",
+    "host": "manueltejeda.com",
+    "username": "drmanuel",
+    "password": "aganar$$$",
+    "port": 21,
+    "remotePath": "/hitsandhits.com/wp-content/plugins/talentua-tallermasters-songwriter-reviewer",
+    "uploadOnSave": true
+}
