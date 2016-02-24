@@ -1,7 +1,7 @@
 #TODO:0 Change README.txt file and add plugin information
 #TODO: Remove set define('WP_DEBUG', false); in /wp-config.php file
 
-=== WP Cleanup and Basic Functions ===
+=== Talentua Taller Masters Songwriter Reviewer ===
 Contributors: (this should be a list of wordpress.org userid's)
 Donate link: https://twitter.com/zerofoolcoder
 Tags: comments, spam
