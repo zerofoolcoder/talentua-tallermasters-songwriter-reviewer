@@ -21,20 +21,11 @@
 	<form method="post" name="tallermasters_options" action="options.php">
 
 		<?php
-		//Grab all options
-
-			$options = get_option($this->plugin_name);
-
-			// Selected Ninja Form
-			$ninja_form = $options['selected_ninja_form'];
-		?>
-
-		<?php
+			$ninja_form = $this->tal_tm_swr_options['selected_ninja_form'];
 			settings_fields( $this->plugin_name );
 			do_settings_sections( $this->plugin_name );
 		?>
 
-	<!-- remove some meta and generators from the <head> -->
 		<p>
 			<fieldset>
 				<legend class="screen-reader-text"><span><?php _e('Select Ninja Form', $this->plugin_name);?></span></legend>
@@ -42,7 +33,7 @@
 					<select id="<?php echo $this->plugin_name;?>-selected_ninja_form" name="<?php echo $this->plugin_name;?>[selected_ninja_form]" />
 						<?php
 							foreach($this->tal_tm_swr_forms as $form) {
-								echo '<option value = "' . $form->id . '" ' . selected( $options['selected_ninja_form'], $form->id, false ) . '>' . $form->name . '</option>';
+								echo '<option value = "' . $form->id . '" ' . selected( $ninja_form, $form->id, false ) . '>' . $form->name . '</option>';
 							}
 						?>
 					</select>
