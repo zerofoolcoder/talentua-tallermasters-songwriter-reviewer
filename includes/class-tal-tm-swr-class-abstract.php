@@ -1,7 +1,8 @@
 <?php
 	abstract class Tal_Tm_Swr_Class_Abstract implements Countable, Iterator {
     //property declaration
-		private $_data = array();
+		protected $_data = array();
+		protected $_Items = array();
 		public $_Count = 0;
 		public $_Index = 0;
 
@@ -12,6 +13,17 @@
 		abstract public function valid();
 
     //concrete methods
+		public function __construct() {
+      spl_autoload_register(array($this, 'loadDependency'));
+    }
+
+		private function loadDependency($className) {
+  		if (0 !== strpos( $className, 'Tal_Tm_Swr')) return;
+
+      $class = 'includes/class-' . str_replace('_', '-', strtolower($className)) . '.php';
+			include plugin_dir_path( dirname( __FILE__ ) ) . $class;
+  	}
+
 		public function count() {
 			return $this->_Count;
 		}

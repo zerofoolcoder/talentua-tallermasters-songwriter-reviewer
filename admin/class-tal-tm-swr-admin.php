@@ -1,7 +1,6 @@
 <?php
 
-// DONE:30 Remove unnecessary functionality and add own
-
+// DONE:50 Remove unnecessary functionality and add own
 /**
  * The admin-specific functionality of the plugin.
  *
@@ -42,6 +41,9 @@ class Tal_Tm_Swr_Admin {
      */
     private $version;
 
+    private $tal_tm_swr_options;
+    private $tal_tm_swr_forms;
+
     /**
      * Initialize the class and set its properties.
      *
@@ -50,14 +52,18 @@ class Tal_Tm_Swr_Admin {
      * @param      string    $version    The version of this plugin.
      */
     public function __construct( $plugin_name, $version ) {
-
-      $this->load_dependencies();
       $this->plugin_name = $plugin_name;
       $this->version = $version;
       $this->tal_tm_swr_options = get_option($this->plugin_name);
-      $this->tal_tm_swr_forms = Tal_Tm_Swr_Model::get_forms();
-
+      spl_autoload_register(array($this, 'loadDependency'));
     }
+
+    private function loadDependency($className) {
+  		if (0 !== strpos( $className, 'Tal_Tm_Swr')) return;
+
+      $class = 'includes/class-' . str_replace('_', '-', strtolower($className)) . '.php';
+			include plugin_dir_path( dirname( __FILE__ ) ) . $class;
+  	}
 
     /**
      * Register the stylesheets for the admin area.
@@ -144,7 +150,8 @@ class Tal_Tm_Swr_Admin {
      * @since    1.0.0
      */
     public function display_plugin_setup_page() {
-        include_once( 'partials/tal-tm-swr-admin-display.php' );
+      $this->tal_tm_swr_forms = Tal_Tm_Swr_Model::get_forms();
+      include_once( 'partials/tal-tm-swr-admin-display.php' );
     }
 
     /**
@@ -178,15 +185,5 @@ class Tal_Tm_Swr_Admin {
      *
      * @since    1.0.0
      */
-
-     private function load_dependencies() {
-
-   		/**
-   		 * The function responsible for loading the classes needed by the public-facing side of the site
-   		 * core plugin.
-   		 */
-   		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-tal-tm-swr-model.php';
-
-   	}
 
 }

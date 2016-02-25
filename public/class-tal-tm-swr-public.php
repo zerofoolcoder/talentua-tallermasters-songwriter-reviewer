@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The public-facing functionality of the plugin.
  *
@@ -40,14 +39,7 @@ class Tal_Tm_Swr_Public {
 	 */
 	private $version;
 
-	/**
-	 * The model.
-	 *
-	 * @since    1.0.0
-	 * @access   private
-	 * @var      object    $model    The model of this plugin.
-	 */
-	private $model;
+	private $tal_tm_swr_options;
 
 	/**
 	 * Initialize the class and set its properties.
@@ -57,14 +49,11 @@ class Tal_Tm_Swr_Public {
 	 * @param      string    $version    The version of this plugin.
 	 */
 	public function __construct( $plugin_name, $version ) {
+		//spl_autoload_register(array($this, 'loadDependency'));
 
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
 		$this->tal_tm_swr_options = get_option($this->plugin_name);
-
-		$this->load_dependencies();
-		$this->model = new Tal_Tm_Swr_Model();
-
 	}
 
 	/**
@@ -116,14 +105,16 @@ class Tal_Tm_Swr_Public {
 	}
 
 	// Shortcode function to load / save the songwriter reviewer form
-	public function tal_tm_swr_reviewer() {
+	public function tal_tm_swr_reviewer($atts) {
 		if (is_admin()) return;
 
 		// Update Candidate status in case we have submitted information
 		if($this->form_submitted()) $this->update_candidate();
 
 		// If we have a ninja form to work with, then continue
-		if(!empty($this->tal_tm_swr_options['selected_ninja_form'])) $this->display_plugin_reviewer_page();
+		$status = shortcode_atts( array('status' => ''), $atts );
+
+		if(!empty($this->tal_tm_swr_options['selected_ninja_form'])) $this->display_plugin_reviewer_page($status['status']);
 	}
 
 	public function tal_tm_swr_list() {
@@ -136,17 +127,16 @@ class Tal_Tm_Swr_Public {
 	 *
 	 * @since    1.0.0
 	 */
-	public function display_plugin_reviewer_page() {
-		$Casting = Tal_Tm_Swr_Kreator::createCasting(Tal_Tm_Swr_Model::get_submissions($this->tal_tm_swr_options['selected_ninja_form']));
-
-//		$Casting = $this->model->getCastingCandidate($this->tal_tm_swr_options['selected_ninja_form']);
-		$Casting->getCastingCandidatesSummary();
+	public function display_plugin_reviewer_page($status) {
+		$Casting = Tal_Tm_Swr_Kreator::create(Tal_Tm_Swr_Abstract_Factory_Items_Enum::Casting);
+		$Casting->loadCandidates($this->tal_tm_swr_options['selected_ninja_form'], $status);
 
 		include_once( 'partials/tal-tm-swr-public-display.php' );
 	}
 
 	public function display_plugin_list_page() {
-		$Casting = Tal_Tm_Swr_Kreator::createCasting(Tal_Tm_Swr_Model::get_submissions($this->tal_tm_swr_options['selected_ninja_form']));
+		$Casting = Tal_Tm_Swr_Kreator::create(Tal_Tm_Swr_Abstract_Factory_Items_Enum::Casting);
+		$Casting->loadCandidates($this->tal_tm_swr_options['selected_ninja_form'], null);
 
 		include_once( 'partials/tal-tm-swr-public-display-list.php' );
 	}
@@ -174,7 +164,7 @@ class Tal_Tm_Swr_Public {
 
 		$_post_id = esc_attr($_GET['_post_id']);
 		$status = esc_attr($_GET['status']);
-		$this->model->updateCandidate($_post_id, $status);
+		Tal_Tm_Swr_Model::updateCandidate($_post_id, $status);
 
   }
 
@@ -184,14 +174,4 @@ class Tal_Tm_Swr_Public {
 		return false;
 	}
 
-	private function load_dependencies() {
-
-		/**
-		 * The function responsible for loading the classes needed by the public-facing side of the site
-		 * core plugin.
-		 */
-		 require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-tal-tm-swr-model.php';
-		 require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-tal-tm-swr-kreator.php';
-
-	}
 }
