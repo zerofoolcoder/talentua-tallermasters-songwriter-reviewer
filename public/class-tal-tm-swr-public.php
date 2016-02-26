@@ -119,7 +119,13 @@ class Tal_Tm_Swr_Public {
 
 	public function tal_tm_swr_list() {
 		if (is_admin()) return;
-		$this->display_plugin_list_page();
+
+		// Check if we need to apply a filter
+		$statusEnum = Tal_Tm_Swr_Abstract_Status_Enum::enum();
+		$filter = null;
+		if($this->form_submitted()) $filter = $statusEnum[$_GET['filter']];
+
+		$this->display_plugin_list_page($filter);
 	}
 
 	/**
@@ -134,9 +140,9 @@ class Tal_Tm_Swr_Public {
 		include_once( 'partials/tal-tm-swr-public-display.php' );
 	}
 
-	public function display_plugin_list_page() {
+	public function display_plugin_list_page($filter) {
 		$Casting = Tal_Tm_Swr_Kreator::create(Tal_Tm_Swr_Abstract_Factory_Items_Enum::Casting);
-		$Casting->loadCandidates($this->tal_tm_swr_options['selected_ninja_form'], null);
+		$Casting->loadCandidates($this->tal_tm_swr_options['selected_ninja_form'], $filter);
 
 		include_once( 'partials/tal-tm-swr-public-display-list.php' );
 	}
@@ -169,7 +175,8 @@ class Tal_Tm_Swr_Public {
   }
 
 	private function form_submitted() {
-		if (isset($_GET['_post_id']) && isset($_GET['status'])) return true;
+		if ( (isset($_GET['_post_id']) && isset($_GET['status'])) ||
+				 (isset($_GET['filter']))) return true;
 
 		return false;
 	}
