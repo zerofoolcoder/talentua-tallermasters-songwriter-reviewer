@@ -3,7 +3,7 @@
 		const Accepted = "accepted";
 		const Rejected = "rejected";
 		const StandBy = "standby";
-//		const Unreviewed = "";
+		const Unreviewed = '';
 
 		public static function enum() {
 	        $reflect = new ReflectionClass(get_class());

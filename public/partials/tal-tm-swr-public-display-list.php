@@ -49,9 +49,41 @@
 <?php
   } else {
 ?>
+    <!-- Candidate Summary -->
+    <div class="et_pb_section  et_pb_section_0 et_section_regular" style="padding: 1% 0 0;">
+      <div class=" et_pb_row et_pb_row_0" style="padding: 1% 0 0;">
+        <div class="et_pb_column et_pb_column_4_4  et_pb_column_0">
+          <div class="et_pb_text et_pb_module et_pb_bg_layout_light et_pb_text_align_right  et_pb_text_0">
+            <h5><?php echo $Casting->_CandidatesReviewed; ?> de <?php echo $Casting->_TotalCandidates; ?> candidatos evaluados</h5>
+              <span class="et-pb-icon et-waypoint et_pb_animation_top et-pb-icon-circle et-animated" style="font-size: 20px; color: #666; padding: 5px; vertical-align: middle;"></span>
+              [
+                <a href="<?php echo get_site_url() . '/' . get_query_var('pagename') . '?filter=Accepted'; ?>" style="text-decoration: underline;">
+                  <span class="et-pb-icon et-waypoint et_pb_animation_top et-pb-icon-circle et-animated" style="background-color: #81d742; font-size: 10px; color: #d8d8d8; padding: 5px;"></span>
+                  ( <?php echo $Casting->_CandidatesAccepted; ?> )
+                </a>
+              |
+                <a href="<?php echo get_site_url() . '/' . get_query_var('pagename') . '?filter=Rejected'; ?>" style="text-decoration: underline;">
+                  <span class="et-pb-icon et-waypoint et_pb_animation_top et-pb-icon-circle et-animated" style="background-color: #dd3333; font-size: 10px; color: #d8d8d8; padding: 5px;"></span>
+                  ( <?php echo $Casting->_CandidatesRejected; ?> )
+                </a>
+              |
+                <a href="<?php echo get_site_url() . '/' . get_query_var('pagename') . '?filter=StandBy'; ?>" style="text-decoration: underline;">
+                  <span class="et-pb-icon et-waypoint et_pb_animation_top et-pb-icon-circle et-animated" style="background-color: #FF0; font-size: 10px; color: #d8d8d8; padding: 5px;"></span>
+                  ( <?php echo $Casting->_CandidatesStandBy; ?> )
+                </a>
+              |
+                <a href="<?php echo get_site_url() . '/' . get_query_var('pagename') . '?filter=Unreviewed'; ?>" style="text-decoration: underline;">
+                  <span class="et-pb-icon et-waypoint et_pb_animation_top et-pb-icon-circle et-animated" style="background-color: #999; font-size: 10px; color: #d8d8d8; padding: 5px;"></span>
+                  ( <?php echo $Casting->_CandidatesUnreviewed; ?> )
+                </a>
+              ]
+          </div> <!-- .et_pb_text -->
+    		</div> <!-- .et_pb_column -->
+    	</div> <!-- .et_pb_row -->
+    </div>
 
 <!-- Print Table Headers -->
-    <div class="et_pb_section  et_pb_section_0 et_section_regular">
+    <div class="et_pb_section  et_pb_section_0 et_section_regular" style="padding: 1% 0 0;">
       <div class=" et_pb_row et_pb_row_0">
         <div class="et_pb_column et_pb_column_4_4  et_pb_column_0">
           <div class="et_pb_text et_pb_module et_pb_bg_layout_light et_pb_text_align_center  et_pb_text_0">
