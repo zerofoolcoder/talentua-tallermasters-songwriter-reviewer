@@ -101,6 +101,7 @@ class Tal_Tm_Swr_Public {
 		 */
 
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/tal-tm-swr-public.js', array( 'jquery' ), $this->version, false );
+		wp_localize_script( $this->plugin_name, 'tal_tm_swr_review_candidate', array( 'ajaxurl' => admin_url( 'admin-ajax.php')));
 
 	}
 
@@ -108,15 +109,12 @@ class Tal_Tm_Swr_Public {
 	public function tal_tm_swr_reviewer($atts) {
 		if (is_admin()) return;
 
-		// Update Candidate status in case we have submitted information
-		if($this->form_submitted()) $this->update_candidate();
-
 		// If we have a ninja form to work with, then continue
 		$status = shortcode_atts( array('status' => ''), $atts );
-
 		if(!empty($this->tal_tm_swr_options['selected_ninja_form'])) $this->display_plugin_reviewer_page($status['status']);
 	}
 
+	// Shortcode function to show a list of candidates
 	public function tal_tm_swr_list() {
 		if (is_admin()) return;
 
@@ -126,6 +124,28 @@ class Tal_Tm_Swr_Public {
 		if($this->form_submitted()) $filter = $statusEnum[$_GET['filter']];
 
 		$this->display_plugin_list_page($filter);
+	}
+
+	// Action function to update the status of a candidate
+	public function tal_tm_swr_review_candidate() {
+		$this->update_candidate($_POST['sub_id'], $_POST['status']);
+		$response = new WP_Ajax_Response;
+
+		// Proceed, again we are checking for permissions
+		$response->add( array(
+			'data'	=> 'success',
+			'supplemental' => array(
+				'sub_id' => $_POST['sub_id'],
+				'status' => $_POST['status'],
+				'message' => 'This candidate has been updated successfully',
+			),
+		));
+
+		// Whatever the outcome, send the Response back
+		$response->send();
+
+		// Always exit when doing Ajax
+		exit();
 	}
 
 	/**
@@ -166,12 +186,8 @@ class Tal_Tm_Swr_Public {
     return false;
   }
 
-  private function update_candidate() {
-
-		$_post_id = esc_attr($_GET['_post_id']);
-		$status = esc_attr($_GET['status']);
-		Tal_Tm_Swr_Model::updateCandidate($_post_id, $status);
-
+  private function update_candidate($sub_id, $status) {
+		Tal_Tm_Swr_Model::updateCandidate($sub_id, $status);
   }
 
 	private function form_submitted() {

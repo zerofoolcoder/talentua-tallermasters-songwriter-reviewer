@@ -110,12 +110,13 @@
             <div class="et_pb_blurb et_pb_module et_pb_bg_layout_light et_pb_text_align_left  et_pb_blurb_0 et_pb_blurb_position_top">
     	        <div class="et_pb_blurb_content">
     		        <div class="et_pb_main_blurb_image">
-                  <a href="<?php echo get_site_url() . '/' . get_query_var('pagename') . '?_post_id=' . $Candidate->sub_id . '&status=accepted'; ?>"><span class="et-pb-icon et-waypoint et_pb_animation_top et-pb-icon-circle et-animated" style="background-color: #81d742; font-size: 24px; color: #d8d8d8; padding: 10px;"></span></a>
-                  <a href="<?php echo get_site_url() . '/' . get_query_var('pagename') . '?_post_id=' . $Candidate->sub_id . '&status=rejected'; ?>"><span class="et-pb-icon et-waypoint et_pb_animation_top et-pb-icon-circle et-animated" style="background-color: #dd3333; font-size: 24px; color: #d8d8d8; padding: 10px;"></span></a>
-                  <a href="<?php echo get_site_url() . '/' . get_query_var('pagename') . '?_post_id=' . $Candidate->sub_id . '&status=standby'; ?>"><span class="et-pb-icon et-waypoint et_pb_animation_top et-pb-icon-circle et-animated" style="background-color: #FF0; font-size: 24px; color: #d8d8d8; padding: 10px;"></span></a>
+                  <span id="accepted" data-id="<?php echo $Candidate->sub_id; ?>" class="do-ajax et-pb-icon et-waypoint et_pb_animation_top et-pb-icon-circle et-animated" style="background-color: #81d742; font-size: 24px; color: #d8d8d8; padding: 10px; cursor: pointer;"></span>
+                  <span id="rejected" data-id="<?php echo $Candidate->sub_id; ?>" class="do-ajax et-pb-icon et-waypoint et_pb_animation_top et-pb-icon-circle et-animated" style="background-color: #dd3333; font-size: 24px; color: #d8d8d8; padding: 10px; cursor: pointer;"></span>
+                  <span id="standby" data-id="<?php echo $Candidate->sub_id; ?>" class="do-ajax et-pb-icon et-waypoint et_pb_animation_top et-pb-icon-circle et-animated" style="background-color: #FF0; font-size: 24px; color: #d8d8d8; padding: 10px; cursor: pointer;"></span>
                 </div>
     	        </div> <!-- .et_pb_blurb_content -->
             </div>
+            <div id="divLoading"></div>
           <!-- Person Module End -->
 
         </div> <!-- .et_pb_column -->
