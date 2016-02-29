@@ -1,10 +1,10 @@
-#DONE:70 Change README.txt file and add plugin information
-#TODO:10 Remove set define('WP_DEBUG', false); in /wp-config.php file
-#DONE:0 meter un aviso en la calificación para que el evaluador sepa que se está almacenando la información
-#TODO:40 no meter los thumbs porque al momento de meter la imagen a 150x150 no la muestra, cambiar a max-width
-#TODO:20 evaluar imagen que sea imagen, tipo y tamaño
-#DONE:10 ver cómo meter tooltips y ayudas en el cuestionario, describir cada una de las secciones y cómo y para qué son los videos
-#DONE:20 meter las nuevas preguntas al formulario y hacerlas obligatorias
-#TODO:30 fato.mx redirección a tallermasters
-#TODO:0 Meter una liga en el listado para que puedan ver y evaluar al candidato seleccionado
-#TODO:50 quitar hits and hits
+#DONE:80 Change README.txt file and add plugin information
+#TODO:0 Remove set define('WP_DEBUG', false); in /wp-config.php file
+#DONE:10 meter un aviso en la calificación para que el evaluador sepa que se está almacenando la información
+#TODO:30 no meter los thumbs porque al momento de meter la imagen a 150x150 no la muestra, cambiar a max-width
+#TODO:10 evaluar imagen que sea imagen, tipo y tamaño
+#DONE:20 ver cómo meter tooltips y ayudas en el cuestionario, describir cada una de las secciones y cómo y para qué son los videos
+#DONE:30 meter las nuevas preguntas al formulario y hacerlas obligatorias
+#TODO:20 fato.mx redirección a tallermasters
+#DONE:0 Meter una liga en el listado para que puedan ver y evaluar al candidato seleccionado
+#TODO:40 quitar hits and hits
