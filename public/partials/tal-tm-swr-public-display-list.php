@@ -114,16 +114,16 @@
                           <?php
                             switch ($Candidate->_Status) {
                               case 'accepted':
-                                echo '<span class="et-pb-icon et-waypoint et_pb_animation_top et-pb-icon-circle et-animated" style="background-color: #81d742; font-size: 14px; color: #d8d8d8; padding: 6px; font-family: ETmodules;"></span>';
+                                echo '<a href="' . get_site_url() . '/evaluacion/?sub_id=' . $Candidate->sub_id . '"><span class="et-pb-icon et-waypoint et_pb_animation_top et-pb-icon-circle et-animated" style="background-color: #81d742; font-size: 14px; color: #d8d8d8; padding: 6px; font-family: ETmodules;"></span></a>';
                                 break;
                               case 'rejected':
-                                echo '<span class="et-pb-icon et-waypoint et_pb_animation_top et-pb-icon-circle et-animated" style="background-color: #dd3333; font-size: 14px; color: #d8d8d8; padding: 6px; font-family: ETmodules;"></span>';
+                                echo '<a href="' . get_site_url() . '/evaluacion/?sub_id=' . $Candidate->sub_id . '"><span class="et-pb-icon et-waypoint et_pb_animation_top et-pb-icon-circle et-animated" style="background-color: #dd3333; font-size: 14px; color: #d8d8d8; padding: 6px; font-family: ETmodules;"></span></a>';
                                 break;
                               case 'standby':
-                                echo '<span class="et-pb-icon et-waypoint et_pb_animation_top et-pb-icon-circle et-animated" style="background-color: #FF0; font-size: 14px; color: #d8d8d8; padding: 6px; font-family: ETmodules;"></span>';
+                                echo '<a href="' . get_site_url() . '/evaluacion/?sub_id=' . $Candidate->sub_id . '"><span class="et-pb-icon et-waypoint et_pb_animation_top et-pb-icon-circle et-animated" style="background-color: #FF0; font-size: 14px; color: #d8d8d8; padding: 6px; font-family: ETmodules;"></span></a>';
                                 break;
                               case '':
-                                echo '<span class="et-pb-icon et-waypoint et_pb_animation_top et-pb-icon-circle et-animated" style="background-color: #999; font-size: 14px; color: #d8d8d8; padding: 6px; font-family: ETmodules;"></span>';
+                                echo '<a href="' . get_site_url() . '/evaluacion/?sub_id=' . $Candidate->sub_id . '"><span class="et-pb-icon et-waypoint et_pb_animation_top et-pb-icon-circle et-animated" style="background-color: #999; font-size: 14px; color: #d8d8d8; padding: 6px; font-family: ETmodules;"></span></a>';
                                 break;
                               default:
                             }

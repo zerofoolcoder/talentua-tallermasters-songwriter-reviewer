@@ -1,7 +1,7 @@
 <?php
 
-//DONE:20 Call add_shortcode in define_public_hooks function
-//DONE:0 Remove unnecessary hooks in define_public_hooks and define_admin_hooks functions
+//DONE:60 Call add_shortcode in define_public_hooks function
+//DONE:40 Remove unnecessary hooks in define_public_hooks and define_admin_hooks functions
 //UNNECESSARY:0 Add Reviewer classes in load_dependencies function
 
 /**
@@ -183,7 +183,9 @@ class Tal_Tm_Swr {
 		$plugin_public = new Tal_Tm_Swr_Public( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
-		//$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+		$this->loader->add_action('wp_ajax_tal_tm_swr_review_candidate', $plugin_public, 'tal_tm_swr_review_candidate');
+		$this->loader->add_action('wp_ajax_nopriv_tal_tm_swr_review_candidate', $plugin_public, 'tal_tm_swr_review_candidate');
 
     //Shortcodes
 		$this->loader->add_shortcode( 'tal-tm-swr-loadreviewer', $plugin_public, 'tal_tm_swr_reviewer' );

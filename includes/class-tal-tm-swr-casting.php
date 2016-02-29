@@ -14,6 +14,14 @@
       $this->getCastingCandidatesSummary();
     }
 
+    public function loadCandidate($sub_id) {
+      $Candidate = Tal_Tm_Swr_Kreator::create(Tal_Tm_Swr_Abstract_Factory_Items_Enum::Candidate);
+      $Candidate->load($sub_id);
+      $this->_Candidates = Tal_Tm_Swr_Kreator::create(Tal_Tm_Swr_Abstract_Factory_Items_Enum::Candidates);
+      $this->_Candidates->add($Candidate);
+      $this->getCastingCandidatesSummary();
+    }
+
     public function Candidates() {
       return $this->_Candidates;
     }

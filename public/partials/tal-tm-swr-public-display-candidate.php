@@ -110,12 +110,13 @@
             <div class="et_pb_blurb et_pb_module et_pb_bg_layout_light et_pb_text_align_left  et_pb_blurb_0 et_pb_blurb_position_top">
     	        <div class="et_pb_blurb_content">
     		        <div class="et_pb_main_blurb_image">
-                  <a href="<?php echo get_site_url() . '/' . get_query_var('pagename') . '?_post_id=' . $Candidate->sub_id . '&status=accepted'; ?>"><span class="et-pb-icon et-waypoint et_pb_animation_top et-pb-icon-circle et-animated" style="background-color: #81d742; font-size: 24px; color: #d8d8d8; padding: 10px;"></span></a>
-                  <a href="<?php echo get_site_url() . '/' . get_query_var('pagename') . '?_post_id=' . $Candidate->sub_id . '&status=rejected'; ?>"><span class="et-pb-icon et-waypoint et_pb_animation_top et-pb-icon-circle et-animated" style="background-color: #dd3333; font-size: 24px; color: #d8d8d8; padding: 10px;"></span></a>
-                  <a href="<?php echo get_site_url() . '/' . get_query_var('pagename') . '?_post_id=' . $Candidate->sub_id . '&status=standby'; ?>"><span class="et-pb-icon et-waypoint et_pb_animation_top et-pb-icon-circle et-animated" style="background-color: #FF0; font-size: 24px; color: #d8d8d8; padding: 10px;"></span></a>
+                  <span id="accepted" data-id="<?php echo $Candidate->sub_id; ?>" class="do-ajax et-pb-icon et-waypoint et_pb_animation_top et-pb-icon-circle et-animated" style="background-color: #81d742; font-size: 24px; color: #d8d8d8; padding: 10px; cursor: pointer;"></span>
+                  <span id="rejected" data-id="<?php echo $Candidate->sub_id; ?>" class="do-ajax et-pb-icon et-waypoint et_pb_animation_top et-pb-icon-circle et-animated" style="background-color: #dd3333; font-size: 24px; color: #d8d8d8; padding: 10px; cursor: pointer;"></span>
+                  <span id="standby" data-id="<?php echo $Candidate->sub_id; ?>" class="do-ajax et-pb-icon et-waypoint et_pb_animation_top et-pb-icon-circle et-animated" style="background-color: #FF0; font-size: 24px; color: #d8d8d8; padding: 10px; cursor: pointer;"></span>
                 </div>
     	        </div> <!-- .et_pb_blurb_content -->
             </div>
+            <div id="divLoading"></div>
           <!-- Person Module End -->
 
         </div> <!-- .et_pb_column -->
@@ -168,18 +169,34 @@
                 <div class="et_pb_module et_pb_toggle  et_pb_accordion_item_2 et_pb_toggle_close">
                   <h5 class="et_pb_toggle_title">Cuestionario</h5>
                   <div class="et_pb_toggle_content clearfix" style="display: none;">
-                    <h5>¿Cuáles son tus artistas favoritos?</h5>
-                    <p><?php echo html_entity_decode($Candidate->_Pregunta1); ?></p><p></p>
-                    <h5>¿Cuál es el género que te gusta interpretar y por qué?</h5>
-                    <p><?php echo html_entity_decode($Candidate->_Pregunta2); ?></p><p></p>
-                    <h5>¿Por qué decidiste convertirte en compositor / cantante?</h5>
-                    <p><?php echo html_entity_decode($Candidate->_Pregunta3); ?></p><p></p>
                     <h5>¿Por qué te interesa participar en Taller Masters?</h5>
-                    <p><?php echo html_entity_decode($Candidate->_Pregunta4); ?></p><p></p>
+                    <p style="color: #666; margin:0 0 10px 20px"><?php echo html_entity_decode($Candidate->_Pregunta1); ?></p><p></p>
+                    <h5>¿Eres compositor o cantautor?</h5>
+                    <p style="color: #666; margin:0 0 10px 20px;"><?php echo html_entity_decode($Candidate->_Pregunta2); ?></p><p></p>
+                    <h5>¿Qué quieres ser? ¿Un autor de moda o un autor de éxito?</h5>
+                    <p style="color: #666; margin:0 0 10px 20px;"><?php echo html_entity_decode($Candidate->_Pregunta3); ?></p><p></p>
+                    <h5>¿Cuáles son las motivaciones que te llevan a componer?</h5>
+                    <p style="color: #666; margin:0 0 10px 20px;"><?php echo html_entity_decode($Candidate->_Pregunta4); ?></p><p></p>
+                    <h5>¿Te consideras un autor vivencial o que escribe por solicitud de otros?</h5>
+                    <p style="color: #666; margin:0 0 10px 20px;"><?php echo html_entity_decode($Candidate->_Pregunta5); ?></p><p></p>
+                    <h5>¿Cuáles son tus artistas favoritos?</h5>
+                    <p style="color: #666; margin:0 0 10px 20px;"><?php echo html_entity_decode($Candidate->_Pregunta6); ?></p>
+                    <h5>¿Cuál es el género que te gusta interpretar y por qué?</h5>
+                    <p style="color: #666; margin:0 0 10px 20px;"><?php echo html_entity_decode($Candidate->_Pregunta7); ?></p>
+                    <h5>¿Qué piensas de las letras de los nuevos compositores en todos sus géneros y qué aportan?</h5>
+                    <p style="color: #666; margin:0 0 10px 20px;"><?php echo html_entity_decode($Candidate->_Pregunta8); ?></p>
                     <h5>¿Qué te hace diferente a los demás?</h5>
-                    <p><?php echo html_entity_decode($Candidate->_Pregunta5); ?></p><p></p>
+                    <p style="color: #666; margin:0 0 10px 20px;"><?php echo html_entity_decode($Candidate->_Pregunta9); ?></p>
+                    <h5>Después de la música, ¿Qué otra profesión ejercerías?</h5>
+                    <p style="color: #666; margin:0 0 10px 20px;"><?php echo html_entity_decode($Candidate->_Pregunta10); ?></p>
+                    <h5>¿Qué tanto sabes de tus derechos editoriales (llámese Regalías autorales)?</h5>
+                    <p style="color: #666; margin:0 0 10px 20px;"><?php echo html_entity_decode($Candidate->_Pregunta11); ?></p>
+                    <h5>¿Estás firmado con alguna editora?</h5>
+                    <p style="color: #666; margin:0 0 10px 20px;"><?php echo html_entity_decode($Candidate->_Pregunta12); ?></p>
+                    <h5>¿Estas inscrito en la SACM (Sociedad de Autores y Compositores de México)?</h5>
+                    <p style="color: #666; margin:0 0 10px 20px;"><?php echo html_entity_decode($Candidate->_Pregunta13); ?></p>
                     <h5>¿Cómo te enteraste de nosotros?</h5>
-                    <p><?php echo html_entity_decode($Candidate->_Pregunta6); ?></p>
+                    <p style="color: #666; margin:0 0 10px 20px;"><?php echo html_entity_decode($Candidate->_Pregunta14); ?></p>
                   </div> <!-- .et_pb_toggle_content -->
                 </div> <!-- .et_pb_toggle -->
               </div> <!-- .et_pb_accordion -->

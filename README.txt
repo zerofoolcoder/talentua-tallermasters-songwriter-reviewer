@@ -1,6 +1,3 @@
-#DONE:40 Change README.txt file and add plugin information
-#TODO:0 Remove set define('WP_DEBUG', false); in /wp-config.php file
-
 === Talentua Taller Masters Songwriter Reviewer ===
 Contributors: @zerofoolcoder
 Donate link: https://twitter.com/zerofoolcoder
