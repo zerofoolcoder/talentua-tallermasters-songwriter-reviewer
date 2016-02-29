@@ -155,9 +155,14 @@ class Tal_Tm_Swr_Public {
 	 */
 	public function display_plugin_reviewer_page($status) {
 		$Casting = Tal_Tm_Swr_Kreator::create(Tal_Tm_Swr_Abstract_Factory_Items_Enum::Casting);
-		$Casting->loadCandidates($this->tal_tm_swr_options['selected_ninja_form'], $status);
 
-		include_once( 'partials/tal-tm-swr-public-display.php' );
+		if ($this->form_submitted()) {
+			$Casting->loadCandidate($_GET['sub_id']);
+		} else {
+			$Casting->loadCandidates($this->tal_tm_swr_options['selected_ninja_form'], $status);
+		}
+
+		include_once( 'partials/tal-tm-swr-public-display-candidate.php' );
 	}
 
 	public function display_plugin_list_page($filter) {
@@ -191,8 +196,7 @@ class Tal_Tm_Swr_Public {
   }
 
 	private function form_submitted() {
-		if ( (isset($_GET['_post_id']) && isset($_GET['status'])) ||
-				 (isset($_GET['filter']))) return true;
+		if ( (isset($_GET['sub_id'])) || (isset($_GET['filter'])) ) return true;
 
 		return false;
 	}

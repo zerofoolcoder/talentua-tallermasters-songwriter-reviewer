@@ -1,6 +1,6 @@
 <?php
 
-// DONE:70 Remove unnecessary functionality and add own
+// DONE:80 Remove unnecessary functionality and add own
 /**
  * The admin-specific functionality of the plugin.
  *

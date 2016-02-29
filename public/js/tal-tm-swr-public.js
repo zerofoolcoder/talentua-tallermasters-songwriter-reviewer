@@ -14,7 +14,8 @@
 			$.post(tal_tm_swr_review_candidate.ajaxurl, data, function (response) {
 				//var message = $(response).find('supplemental sub_id').text() + ' ' + $(response).find('supplemental status').text() + ' ' + $(response).find('supplemental message').text();
 				//alert(message);
-				location.reload();
+				//location.reload();
+				location = location.protocol +"//"+ location.hostname + location.pathname;
 			});
 		});
 	});
