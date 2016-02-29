@@ -190,6 +190,7 @@ class Tal_Tm_Swr {
     //Shortcodes
 		$this->loader->add_shortcode( 'tal-tm-swr-loadreviewer', $plugin_public, 'tal_tm_swr_reviewer' );
 		$this->loader->add_shortcode( 'tal-tm-swr-loadlist', $plugin_public, 'tal_tm_swr_list' );
+		$this->loader->add_shortcode( 'tal-tm-swr-loadsignup', $plugin_public, 'tal_tm_swr_signup' );
 
 	}
 

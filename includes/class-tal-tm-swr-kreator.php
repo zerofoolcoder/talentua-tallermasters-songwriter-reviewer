@@ -27,6 +27,9 @@
 				case Tal_Tm_Swr_Abstract_Factory_Items_Enum::Forms:
 					return new Tal_Tm_Swr_Forms();
 					break;
+				case Tal_Tm_Swr_Abstract_Factory_Items_Enum::File_Upload:
+					return new Tal_Tm_Swr_File_Upload();
+					break;
 				default:
 					return null;
 			}

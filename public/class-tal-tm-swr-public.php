@@ -196,9 +196,38 @@ class Tal_Tm_Swr_Public {
   }
 
 	private function form_submitted() {
-		if ( (isset($_GET['sub_id'])) || (isset($_GET['filter'])) ) return true;
+		if ( (isset($_GET['sub_id'])) || (isset($_GET['filter'])) || (!empty ( $_FILES )) ) return true;
 
 		return false;
 	}
 
+	public function tal_tm_swr_signup () {
+		if(is_admin()) return;
+
+		$image_url = null;
+		if ($this->form_submitted()) $image_url = $this->uploadImage();
+
+		include_once( 'partials/tal-tm-swr-public-display-sign-up.php' );
+
+	}
+
+	private function uploadImage() {
+		$imageupload = Tal_Tm_Swr_Kreator::create(Tal_Tm_Swr_Abstract_Factory_Items_Enum::File_Upload);
+		$attachment_id = $imageupload->create_attachment();
+		$image_url = null;
+
+		if ( is_wp_error( $attachment_id ) ) {
+			echo '<ol>';
+			foreach ( $attachment_id->get_error_messages() as $err )
+				printf( '<li>%s</li>', $err );
+			echo '</ol>';
+		}
+
+		else {
+			$attachment = get_post( $attachment_id );
+			$image_url  = $attachment->guid;
+		}
+
+		return $image_url;
+	}
 }
