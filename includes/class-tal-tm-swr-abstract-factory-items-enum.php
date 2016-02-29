@@ -9,6 +9,7 @@
 		const Form = "class-tal-tm-swr-form.php";
 		const Forms = "class-tal-tm-swr-forms.php";
 		const Candidates = "class-tal-tm-swr-candidates.php";
+		const File_Upload = "class-tal-tm-swr-file-upload.php";
 
 		public static function enum() {
 	        $reflect = new ReflectionClass(get_class());
