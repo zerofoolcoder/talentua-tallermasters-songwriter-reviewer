@@ -1,5 +1,5 @@
 <?php
-	//UNNECESSARY:10 Change the value of each const to reflect the actual name of the class in order to test spl_autoload function
+	//UNNECESSARY:20 Change the value of each const to reflect the actual name of the class in order to test spl_autoload function
 
 	abstract class Tal_Tm_Swr_Abstract_Factory_Items_Enum {
 		const Item = "class-tal-tm-swr-item.php";

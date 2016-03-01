@@ -1,8 +1,8 @@
 <?php
 
-//DONE:60 Call add_shortcode in define_public_hooks function
-//DONE:40 Remove unnecessary hooks in define_public_hooks and define_admin_hooks functions
-//UNNECESSARY:0 Add Reviewer classes in load_dependencies function
+//DONE:100 Call add_shortcode in define_public_hooks function
+//DONE:80 Remove unnecessary hooks in define_public_hooks and define_admin_hooks functions
+//UNNECESSARY:10 Add Reviewer classes in load_dependencies function
 
 /**
  * The file that defines the core plugin class

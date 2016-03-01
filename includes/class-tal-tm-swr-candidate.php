@@ -1,5 +1,5 @@
 <?php
-  //TODO:50 try to update a candidate in updateCandidate function with this ninja-forms function: Ninja_Forms()->sub( $_post_id )->update_field( 69, 'rejected' );
+  //TODO:10 try to update a candidate in updateCandidate function with this ninja-forms function: Ninja_Forms()->sub( $_post_id )->update_field( 69, 'rejected' );
 
   final class Tal_Tm_Swr_Candidate extends Tal_Tm_Swr_Item {
     public function loadMetadata($data, Tal_Tm_Swr_Form $form) {

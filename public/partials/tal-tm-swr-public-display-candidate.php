@@ -16,7 +16,7 @@
 <!-- This file should primarily consist of HTML with a little bit of PHP. -->
 
 <!-- Header -->
-<div class="et_pb_section et_pb_fullwidth_section  et_pb_section_0 et_section_regular" style="background-color: #000000;">
+<div class="et_pb_section et_pb_fullwidth_section  et_pb_section_0 et_section_regular" style="background-color: #2b0049;">
   <section class="et_pb_fullwidth_header et_pb_module et_pb_bg_layout_dark et_pb_text_align_left  et_pb_fullwidth_header_0">
     <div class="et_pb_fullwidth_header_container left">
       <div class="header-content-container center">

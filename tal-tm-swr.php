@@ -14,9 +14,9 @@
  *
  * @wordpress-plugin
  * Plugin Name:       Talentua TallerMasters Songwriter Reviewer
- * Plugin URI:        https://twitter.com/zerofoolcoder
+ * Plugin URI:        https://github.com/zerofoolcoder/talentua-tallermasters-songwriter-reviewer
  * Description:       This plugin allows you to review the candidates registered to the workshop
- * Version:           1.0.0
+ * Version:           1.0.2
  * Author:            0FC
  * Author URI:        https://twitter.com/zerofoolcoder
  * License:           GPL-2.0+
