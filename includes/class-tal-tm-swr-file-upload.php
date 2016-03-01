@@ -1,5 +1,5 @@
 <?php
-  //TODO: Cambiar las etiquetas de los mensajes de error a español
+  //DONE:0 Cambiar las etiquetas de los mensajes de error a español
   class Tal_Tm_Swr_File_Upload {
     /**
      * Index key from upload form
@@ -61,7 +61,7 @@
 
       if ( empty( $this->filedata ) || is_wp_error( $this->filedata ) ) {
         $code = 'createerror';
-        $msg  = 'Could not create attachment';
+        $msg  = 'No es posible crear un archivo adjunto';
 
         if ( is_wp_error( $this->filedata ) ) {
           $this->errors = $this->filedata;
@@ -116,7 +116,7 @@
       if ( ! isset( $this->files[$this->index_key]['tmp_name'] ) || empty( $this->files[$this->index_key]['tmp_name'] ) ) {
         $code = ( isset( $this->files[$this->index_key]['error'] ) ) ? $this->files[$this->index_key]['error'] : 0;
         $msg = $this->guess_upload_error( $code );
-        return new WP_Error( 'uploaderror', 'Upload failed with message: ' . $msg );
+        return new WP_Error( 'uploaderror', 'Error de carga con mensaje: ' . $msg );
       }
 
       /*
@@ -147,15 +147,15 @@
 
     protected function guess_upload_error( $err = 0 ) {
       $errcodes = array(
-        'Unknown error',
-        'The uploaded file exceeds the upload_max_filesize directive in php.ini.',
-        'The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form.',
-        'The uploaded file was only partially uploaded.',
-        'No file was uploaded.',
-        'Missing a temporary folder.',
-        'Failed to write file to disk.',
-        'A PHP extension stopped the file upload. PHP does not provide a way to ascertain which extension caused the file upload to stop; examining the list of loaded extensions with phpinfo() may help.'
+        'Error desconocido.',
+        'El archivo excede el tamaño máximo definido.',
+        'El archivo excede el tamaño máximo definido.',
+        'No pudo cargarse el archivo completamente.',
+        'No se cargó ningún archivo.',
+        'No existe un directorio temporal.',
+        'No se pudo salvar el archivo en disco.',
+        'No fue posible cargar el archivo.'
       );
-      return ( isset( $errcodes[$err] ) ) ? $errcodes[$err] : 'Unknown error';
+      return ( isset( $errcodes[$err] ) ) ? $errcodes[$err] : 'Error desconocido.';
     }
   }
