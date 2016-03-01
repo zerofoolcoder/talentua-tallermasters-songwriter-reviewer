@@ -8,3 +8,4 @@
 #DONE:20 fato.mx redirección a tallermasters
 #DONE:40 Meter una liga en el listado para que puedan ver y evaluar al candidato seleccionado
 #DONE:10 quitar hits and hits
+#TODO: Al importar la ninja-form a un sitio nuevo, los campos cambian de ID
