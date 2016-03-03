@@ -27,6 +27,10 @@
       return $this->_form_fields[$id];
     }
 
+    public function getFieldID($label) {
+      return array_search($label, array_column($this->_form_fields, 'admin_label'));
+    }
+
     public function load($id) {
       $ninja_form = ninja_forms_get_form_by_id($id);
       $this->loadFormMetadata($ninja_form);
