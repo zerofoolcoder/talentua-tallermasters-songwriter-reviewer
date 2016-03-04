@@ -76,7 +76,7 @@
               if( function_exists( 'ninja_forms_display_form' ) ) { ninja_forms_display_form( $this->tal_tm_swr_options['selected_ninja_form'] ); }
             ?>
               <script type="text/javascript">
-                document.getElementById("ninja_forms_field_67").setAttribute('value','<?php echo $image_url; ?>');
+                document.getElementById("ninja_forms_field_<?php echo $form->getFieldID('_Imagen'); ?>").setAttribute('value','<?php echo $image_url; ?>');
               </script>
           </div>
         </div>

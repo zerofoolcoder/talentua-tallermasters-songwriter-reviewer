@@ -1,8 +1,11 @@
 <?php
 	class Tal_Tm_Swr_Model {
-		public static function updateCandidate($_post_id, $status) {
+		public static function updateCandidate($_post_id, $key, $value) {
+			$form = Tal_Tm_Swr_Kreator::create(Tal_Tm_Swr_Abstract_Factory_Items_Enum::Form);
+			$form->load(Ninja_Forms()->sub( $_post_id )->form_id);
+
 			$Candidate = Tal_Tm_Swr_Kreator::create(Tal_Tm_Swr_Abstract_Factory_Items_Enum::Candidate);
-			$Candidate->update($_post_id, $status);
+			$Candidate->update($_post_id, $form->getFieldID($key), $value);
 		}
 
 		public static function get_forms() {

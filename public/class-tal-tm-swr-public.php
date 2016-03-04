@@ -128,7 +128,7 @@ class Tal_Tm_Swr_Public {
 
 	// Action function to update the status of a candidate
 	public function tal_tm_swr_review_candidate() {
-		$this->update_candidate($_POST['sub_id'], $_POST['status']);
+		$this->update_candidate($_POST['sub_id'], '_Status', $_POST['status']);
 		$response = new WP_Ajax_Response;
 
 		// Proceed, again we are checking for permissions
@@ -191,8 +191,8 @@ class Tal_Tm_Swr_Public {
     return false;
   }
 
-  private function update_candidate($sub_id, $status) {
-		Tal_Tm_Swr_Model::updateCandidate($sub_id, $status);
+  private function update_candidate($sub_id, $key, $value) {
+		Tal_Tm_Swr_Model::updateCandidate($sub_id, $key, $value);
   }
 
 	private function form_submitted() {
@@ -207,6 +207,8 @@ class Tal_Tm_Swr_Public {
 		$image_url = null;
 		if ($this->form_submitted()) $image_url = $this->uploadImage();
 
+		$form = Tal_Tm_Swr_Kreator::create(Tal_Tm_Swr_Abstract_Factory_Items_Enum::Form);
+		$form->load($this->tal_tm_swr_options['selected_ninja_form']);
 		include_once( 'partials/tal-tm-swr-public-display-sign-up.php' );
 
 	}

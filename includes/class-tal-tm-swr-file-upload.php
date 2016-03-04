@@ -1,5 +1,5 @@
 <?php
-  //DONE:0 Cambiar las etiquetas de los mensajes de error a español
+  //DONE:20 Cambiar las etiquetas de los mensajes de error a español
   class Tal_Tm_Swr_File_Upload {
     /**
      * Index key from upload form

@@ -28,7 +28,10 @@
     }
 
     public function getFieldID($label) {
-      return array_search($label, array_column($this->_form_fields, 'admin_label'));
+      foreach($this->_form_fields as $key => $value) {
+        if($value['admin_label'] == $label) return $key;
+      }
+      return null;
     }
 
     public function load($id) {

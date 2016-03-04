@@ -1,5 +1,5 @@
 <?php
-	//DONE:90 test spl_autoload function
+	//DONE:110 test spl_autoload function
 
 	class Tal_Tm_Swr_Kreator implements Tal_Tm_Swr_Interface_Kreator {
 

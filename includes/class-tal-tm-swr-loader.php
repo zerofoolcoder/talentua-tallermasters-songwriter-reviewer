@@ -1,6 +1,6 @@
 <?php
 
-// DONE:110 Add add_shortcode function
+// DONE:130 Add add_shortcode function
 
 /**
  * Register all actions and filters for the plugin

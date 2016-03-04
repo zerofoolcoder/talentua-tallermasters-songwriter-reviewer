@@ -27,9 +27,19 @@
     }
 
     public function getCastingCandidatesSummary() {
+      $form = Tal_Tm_Swr_Kreator::create(Tal_Tm_Swr_Abstract_Factory_Items_Enum::Form);
+      $form->load($this->_Candidates->current()->form_id);
+      $status_id = $form->getFieldID('_Status');
+
       global $wpdb;
 
-      $query = "select `t1`.`unreviewed`, `t2`.`reviewed`, `t3`.`accepted`, `t4`.`rejected`, `t5`.`standby` from (select count(`meta_id`) `unreviewed` from `wp_postmeta` where `meta_key` = '_field_69' and `meta_value` = '') `t1`, (select count(`meta_id`) `reviewed` from `wp_postmeta` where `meta_key` = '_field_69' and `meta_value` != '') `t2`, (select count(`meta_id`) `accepted` from `wp_postmeta` where `meta_key` = '_field_69' and `meta_value` = 'accepted') `t3`, (select count(`meta_id`) `rejected` from `wp_postmeta` where `meta_key` = '_field_69' and `meta_value` = 'rejected') `t4`, (select count(`meta_id`) `standby` from `wp_postmeta` where `meta_key` = '_field_69' and `meta_value` = 'standby') `t5`";
+      $query = "select `t1`.`unreviewed`, `t2`.`reviewed`, `t3`.`accepted`, `t4`.`rejected`, `t5`.`standby`
+                from  (select count(`meta_id`) `unreviewed` from `wp_postmeta` where `meta_key` = '_field_$status_id' and `meta_value` = '') `t1`,
+                      (select count(`meta_id`) `reviewed` from `wp_postmeta` where `meta_key` = '_field_$status_id' and `meta_value` != '') `t2`,
+                      (select count(`meta_id`) `accepted` from `wp_postmeta` where `meta_key` = '_field_$status_id' and `meta_value` = 'accepted') `t3`,
+                      (select count(`meta_id`) `rejected` from `wp_postmeta` where `meta_key` = '_field_$status_id' and `meta_value` = 'rejected') `t4`,
+                      (select count(`meta_id`) `standby` from `wp_postmeta` where `meta_key` = '_field_$status_id' and `meta_value` = 'standby') `t5`";
+
       $result = $wpdb->get_results($query);
       $this->_CandidatesUnreviewed = $result[0]->unreviewed;
       $this->_CandidatesReviewed = $result[0]->reviewed;
