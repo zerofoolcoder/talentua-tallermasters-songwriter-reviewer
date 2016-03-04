@@ -1,7 +1,7 @@
 <?php
 
-//DONE:100 Call add_shortcode in define_public_hooks function
-//DONE:80 Remove unnecessary hooks in define_public_hooks and define_admin_hooks functions
+//DONE:120 Call add_shortcode in define_public_hooks function
+//DONE:100 Remove unnecessary hooks in define_public_hooks and define_admin_hooks functions
 //UNNECESSARY:10 Add Reviewer classes in load_dependencies function
 
 /**
