@@ -45,6 +45,9 @@
           |
             <span class="et-pb-icon et-waypoint et_pb_animation_top et-pb-icon-circle et-animated" style="background-color: #FF0; font-size: 10px; color: #d8d8d8; padding: 5px;"></span>
             ( <?php echo $Casting->_CandidatesStandBy; ?> )
+          |
+            <span class="et-pb-icon et-waypoint et_pb_animation_top et-pb-icon-circle et-animated" style="background-color: #999; font-size: 10px; color: #d8d8d8; padding: 5px;"></span>
+            ( <?php echo $Casting->_CandidatesUnreviewed; ?> )
           ]
       </div> <!-- .et_pb_text -->
 		</div> <!-- .et_pb_column -->
